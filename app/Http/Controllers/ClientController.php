@@ -151,10 +151,10 @@ class ClientController extends Controller
      */
     public function edit(Client $client)
     {
-        $clients_type   =   ClientType::all();
+
         $counters       =   Counter::all();
         $address        =   Address::where('client_id', $client->id);
-        return view('client.edit', compact('clients_type','counters','client','address'));
+        return view('client.edit', compact('counters','client','address'));
     }
 
     /**

@@ -20,6 +20,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
+
         $employees = Employee::all();
         $employee_types = EmployeeTypes::all();
         $departments = Department::all();
@@ -33,6 +34,7 @@ class EmployeeController extends Controller
      */
     public function create()
     {
+
         $employee_types = EmployeeTypes::all();
         return view('employee.create',compact('employee_types'));
     }
@@ -45,6 +47,7 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
+
         //Create a new User Account
         $randomPassword = Str::random(10);;
         $userData = [
@@ -55,7 +58,7 @@ class EmployeeController extends Controller
         ];
         $newUser = User::create($userData);
         //User on Client Role
-        $newUser->assignRole('super-admin');
+        $newUser->assignRole('operator');
 
         $employee = Employee::create(
             $request->only(['name','surname', 'document_type', 'document_name', 'email','nationality', 'telefone', 'gender','country', 'employee_type_id','user_id', 'department_id']));
@@ -71,7 +74,7 @@ class EmployeeController extends Controller
         $address->avenue            =   $request->avenue;
         $address->block             =   $request->block;
         $address->place_number      =   $request->place_number;
-        $address->user_id           =   $newUser->id;
+        $address->employee_id       =  $employee->id;
         $address->save();
 
 
@@ -102,7 +105,11 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+
+        $employees = Employee::all();
+        $employee_types = EmployeeTypes::all();
+        $departments = Department::all();
+        return view('employee.edit',compact('employee','employee_types','departments'));
     }
 
     /**
@@ -114,7 +121,15 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        $employee->name = $request->name;
+        $employee->surname = $request->surname;
+        $employee->telefone = $request->telefone;
+        $employee->nationality = $request->nationality;
+
+        $employee->save();
+
+        return redirect()->to('/employees')->with(['message' => 'Funcionario atualizado com sucesso']);
+
     }
 
     /**
@@ -125,6 +140,8 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+
+        return redirect()->to('/employees')->with(['message' => 'Funcionario apagado com sucesso']);
     }
 }

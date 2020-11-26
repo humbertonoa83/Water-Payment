@@ -35,6 +35,11 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('sell-recharges',  App\Http\Controllers\SellController::class);
     Route::post('/second-via',  [App\Http\Controllers\SellController::class,'secondVia'])->name('second.via');
 
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class,'index'])->name('profile');
+    Route::post('/profile/update', [App\Http\Controllers\ProfileController::class,'updateProfile'])->name('profile.update');
+    Route::get('/logout', [App\Http\Controllers\HomeController::class,'logout'])->name('logout');
+
+
 
 });
 

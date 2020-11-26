@@ -54,119 +54,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">Nacionalidade <span class="required">*</span></label>
-                                            <select  name="nationality" class="custom-select">
-                                                <option value="YE">Yemen</option>
-                                                <option value="ZM">Zambia</option>
-                                                <option value="ZW">Zimbabwe</option>
-                                            </select>
+                                            <input class="form-control border-form-control " value="{{$client->nationality}}" name="nationality"  type="text">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">País de residência <span class="required">*</span></label>
-                                            <select   name="country" class="custom-select">
-                                                <option  value="{{$client->country}}">{{$client->country}}</option>
-                                                <option value="AF">Alaska</option>
-                                                <option value="AX">New Hampshire</option>
-                                                <option value="AL">Oregon</option>
-                                                <option value="DZ">Toronto</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Número de documento <span class="required">*</span></label>
-                                            <input class="form-control border-form-control" value="{{$client->document_name}}" name="document_name" placeholder="123456" type="number">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Tipo de documento <span class="required">*</span></label>
-                                            <select name="document_type"  class="custom-select">
-                                                <option @if($client->document_type == 1) value="1" @else value="2" @endif >{{$client->document_type}}</option>
-                                                <option value="AF">California</option>
-                                                <option value="AX">Florida</option>
-                                                <option value="AL">Georgia</option>
-                                                <option value="DZ">Idaho</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Provincia <span class="required">*</span></label>
-                                            <select name="province"  class="custom-select">
-                                                <option value="">Select State</option>
-                                                <option value="AF">California</option>
-                                                <option value="AX">Florida</option>
-                                                <option value="AL">Georgia</option>
-                                                <option value="DZ">Idaho</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Distrito <span class="required">*</span></label>
-                                            <select name="district"  class="custom-select">
-                                                <option value="">Select State</option>
-                                                <option value="AF">California</option>
-                                                <option value="AX">Florida</option>
-                                                <option value="AL">Georgia</option>
-                                                <option value="DZ">Idaho</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Bairro <span class="required">*</span></label>
-                                            <input class="form-control border-form-control" value="{{$address->neighborhood}}" name="neighborhood" placeholder="123456" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Rua <span class="required">*</span></label>
-                                            <input class="form-control border-form-control" value="" name="street" placeholder="123456" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Avenida <span class="required">*</span></label>
-                                            <input class="form-control border-form-control" value="" name="avenue" placeholder="123456" type="text">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Quarteirão <span class="required">*</span></label>
-                                            <input class="form-control border-form-control" value="" name="block" placeholder="123456" type="text">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Numero da casa <span class="required">*</span></label>
-                                            <input class="form-control border-form-control" value="" name="place_number" placeholder="123456" type="number">
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label class="control-label">Tipo de cliente <span class="required">*</span></label>
-                                            <select name="client_type"  class="custom-select">
-                                                <option value="-1">Selecione o tipo de cliente</option>
-                                                @foreach($clients_type as $client_type )
-                                                    <option value="{{$client_type->id}}">{{$client_type->name}}</option>
-                                                @endforeach
-                                            </select>
+                                            <input class="form-control border-form-control " value="{{$client->country}}" name="country"  type="text">
                                         </div>
                                     </div>
                                 </div>
