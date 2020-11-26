@@ -15,10 +15,22 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return view('dashboard');
+    });
+
+    Route::resource('clients',      App\Http\Controllers\ClientController::class);
+    Route::resource('employees',  App\Http\Controllers\EmployeeController::class);
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('/employee-types',  App\Http\Controllers\EmployeeTypesController::class);
+    Route::resource('/departaments',  App\Http\Controllers\DepartmentController::class);
+
+    Route::resource('counters',     App\Http\Controllers\CounterController::class);
+    Route::get('/counter/new', [App\Http\Controllers\CounterController::class, 'new_counter'])->name('counter.new');
+    Route::post('/counter/create', [App\Http\Controllers\CounterController::class,'save_counter'])->name('counter.save');
+
+
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
