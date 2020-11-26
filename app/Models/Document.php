@@ -1,14 +1,16 @@
 <?php
 
+
 namespace App\Models;
+
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Address extends Model
+class Document extends Model
 {
     use HasFactory;
-    protected $fillable = ['country', 'province','district','neighborhood','street','avenue','block','place_number','client_id','employee_id'];
+    protected $fillable = ['document_number', 'document_type','issue_place','issue_date','expiration_date','user_id'];
 
     public function client()
     {
@@ -19,5 +21,4 @@ class Address extends Model
     {
         return $this->belongsTo('App\Models\Employee');
     }
-
 }

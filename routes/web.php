@@ -31,6 +31,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/counter/new', [App\Http\Controllers\CounterController::class, 'new_counter'])->name('counter.new');
     Route::post('/counter/create', [App\Http\Controllers\CounterController::class,'save_counter'])->name('counter.save');
 
+    Route::resource('recharges',       App\Http\Controllers\RechargeController::class);
+    Route::resource('sell-recharges',  App\Http\Controllers\SellController::class);
+    Route::post('/second-via',  [App\Http\Controllers\SellController::class,'secondVia'])->name('second.via');
+
 
 });
 
